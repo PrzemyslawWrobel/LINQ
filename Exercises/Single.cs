@@ -66,9 +66,10 @@ namespace Exercises
         public static DateTime? GetSingleDay_Refactored(
             IEnumerable<DateTime> dates, DayOfWeek dayOfWeek)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
-        }
+            return dates.Count(date => date.DayOfWeek == dayOfWeek) == 1 ?
+                    dates.Single(date => date.DayOfWeek == dayOfWeek) :
+                    (DateTime?)null;
+         }
 
         //do not modify this method
         public static DateTime? GetSingleDay(
