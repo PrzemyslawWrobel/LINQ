@@ -32,8 +32,7 @@ namespace Exercises
          */
         public static Person GetYoungest(IEnumerable<Person> people)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return people.OrderBy(p => p.DateOfBirth).LastOrDefault();
         }
 
         //Refactoring challenge
