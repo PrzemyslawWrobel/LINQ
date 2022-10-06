@@ -39,8 +39,7 @@ namespace Exercises
         //TODO implement this method
         public static Person FindOwnerOf_Refactored(Pet pet, IEnumerable<Person> people)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+               return people.FirstOrDefault(p => p.Pets.Contains( pet));
         }
 
         //do not modify this method
