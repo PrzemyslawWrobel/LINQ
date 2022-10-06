@@ -58,8 +58,7 @@ namespace Exercises
         public static IEnumerable<int> GetSingleElementCollection(
             IEnumerable<IEnumerable<int>> numberCollections)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numberCollections.Single(col => col.Count() == 1);
         }
 
         //Refactoring challenge
