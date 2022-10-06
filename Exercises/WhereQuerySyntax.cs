@@ -49,8 +49,7 @@ namespace Exercises
            GetStudentsWhoNeedToStudyMore(
                IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return students.Where(student => (student.Marks.Average() < 3) || (student.Marks.Count() == 0));
         }
 
         //Refactoring challenge
@@ -59,8 +58,7 @@ namespace Exercises
                  string substring,
                  IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Where(word => word.Contains(substring)).OrderBy(result => result);
         }
 
         //do not modify this method
