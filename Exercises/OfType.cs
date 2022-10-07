@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -11,8 +12,7 @@ namespace Exercises
         //If no integer is present, it shall return null.
         public static int? GetTheFirstInteger(IEnumerable<object> objects)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return objects.OfType<int>().FirstOrDefault();
         }
 
         //Coding Exercise 2
