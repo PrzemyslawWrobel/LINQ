@@ -54,8 +54,7 @@ namespace Exercises
         public static IEnumerable<string> GetWordsShorterThan5Letters_Refactored(
             IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Distinct().Where(word => word.Length < 5);
         }
 
         //do not modify this method
