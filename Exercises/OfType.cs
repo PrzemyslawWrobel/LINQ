@@ -28,8 +28,8 @@ namespace Exercises
         //TODO implement this method
         public static DateTime? GetTheLatestDate_Refactored(IEnumerable<object> objects)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var tmpDates =  objects.OfType<DateTime>();
+            return tmpDates.Any() ? (DateTime?)tmpDates.Max() : null;
         }
 
         //do not modify this method
