@@ -51,7 +51,7 @@ namespace Exercises
         public static IEnumerable<Pet> GetGivenPercentOfHeaviestPets(
             IEnumerable<Pet> pets, int percent)
         {
-            return pets.OrderByDescending(pet =>pet.Weight).Take((pets.Count() * percent / 100));
+            return pets.OrderByDescending(pet => pet.Weight).Take((pets.Count() * percent / 100));
             
         }
 
@@ -60,8 +60,7 @@ namespace Exercises
         public static IEnumerable<DateTime> GetDatesBeforeXXCentury_Refactored(
             IEnumerable<DateTime> dates)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return dates.TakeWhile(date => date.Year < 1901);
         }
 
         //do not modify this method
