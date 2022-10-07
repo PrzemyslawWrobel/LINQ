@@ -51,8 +51,8 @@ namespace Exercises
         public static IEnumerable<Pet> GetGivenPercentOfHeaviestPets(
             IEnumerable<Pet> pets, int percent)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return pets.OrderByDescending(pet =>pet.Weight).Take((pets.Count() * percent / 100));
+            
         }
 
         //Refactoring challenge
