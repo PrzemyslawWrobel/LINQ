@@ -43,8 +43,10 @@ namespace Exercises
         public static IEnumerable<T> GetCollectionWithMostDuplicates<T>(
             IEnumerable<IEnumerable<T>> collections)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return collections.OrderBy(
+                collection => collection.Count() - collection.Distinct().Count())
+                .ThenByDescending(collection => collection.Count())
+                .LastOrDefault();
         }
 
         //Refactoring challenge
