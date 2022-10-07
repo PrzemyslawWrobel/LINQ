@@ -20,8 +20,15 @@ namespace Exercises
          */
         public static IEnumerable<int> TakeSome(IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            if (numbers.Count() < 10)
+            {
+                return numbers.Take(3);
+            }
+            else if(numbers.Count() > 9 && numbers.Count() < 100)
+            {
+                return numbers.Take(30);
+            }  
+            return numbers;
         }
 
         //Coding Exercise 2
