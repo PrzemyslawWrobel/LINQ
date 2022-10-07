@@ -55,7 +55,6 @@ namespace Exercises
             const string Start = "START";
             const string End = "END";
 
-
             var isValidCollection =
                 words.Count(word => word == Start) == 1 &&
                 words.Count(word => word == End) == 1 &&
@@ -73,8 +72,7 @@ namespace Exercises
         public static IEnumerable<int> GetAllAfterFirstDividableBy100_Refactored(
             IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers.SkipWhile(number => number % 100 != 0);
         }
 
         //do not modify this method
