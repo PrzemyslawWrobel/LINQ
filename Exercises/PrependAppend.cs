@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 namespace Exercises
 {
@@ -28,8 +31,12 @@ namespace Exercises
          */
         public static IEnumerable<string> AddStartAndEndMarkers(IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            const string Start = "START";
+            const string End = "END";
+
+            var addStart = words.First() == Start ? words : words.Prepend(Start);
+
+            return addStart = addStart.Last() == End ? addStart : addStart.Append(End);
         }
 
         //Coding Exercise 2
