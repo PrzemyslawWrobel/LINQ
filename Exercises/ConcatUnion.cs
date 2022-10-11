@@ -53,8 +53,12 @@ namespace Exercises
          */
         public static string CleanWord(string word)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var wordToCharArray = word.ToCharArray();
+
+            var letters = wordToCharArray.Where(x => char.IsLetter(x));
+            var notLetters = wordToCharArray.Where(x => !char.IsLetter(x)).Distinct();
+
+            return new string(letters.Concat(notLetters).ToArray());
         }
 
         //Refactoring challenge
