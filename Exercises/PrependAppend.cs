@@ -76,8 +76,7 @@ namespace Exercises
         public static IEnumerable<string> TrimSentenceAndChangeEndMarker_Refactored(
             IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.TakeWhile(x => x != "The end").Append("END");
         }
 
         //do not modify this method
