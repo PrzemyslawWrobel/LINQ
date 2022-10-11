@@ -63,8 +63,12 @@ namespace Exercises
              GetStudentsAverageMarks_Refactored(
                  IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return students.ToDictionary(
+                student => $"{student.FirstName} " +
+                    $"{student.LastName} born on" +
+                    $" {student.DateOfBirth.ToString("d")}",
+                student => student.Marks.Any() ?
+                student.Marks.Average() : 0);
         }
 
         //do not modify this method
