@@ -26,8 +26,14 @@ namespace Exercises
         public static Dictionary<string, int?> ParseToNumbersAndStoreInDictionary(
             IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Distinct().ToDictionary(
+                word => word, //key
+                word =>       //value  
+                {
+                    int parsingRes;
+
+                    return int.TryParse(word, out parsingRes) ? parsingRes : (int?)null;
+                });
         }
 
         //Coding Exercise 2
