@@ -58,8 +58,17 @@ namespace Exercises
         public static IEnumerable<int> RemoveDuplicatesFromStartAndEnd(
             IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            if (numbers.Count() < 2)
+                return numbers;
+
+            var startNumber = numbers.First();
+            var endNumber = numbers.Last();
+
+            return numbers
+                .Where(x => x != startNumber)
+                .Prepend(startNumber)
+                .Where(x =>x != endNumber)
+                .Append(endNumber);  
         }
 
         //Refactoring challenge
