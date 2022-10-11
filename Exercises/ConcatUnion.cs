@@ -66,8 +66,7 @@ namespace Exercises
         public static IEnumerable<int> GetPerfectSquares_Refactored(
             IEnumerable<int> numbers1, IEnumerable<int> numbers2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers1.Where(x => Math.Sqrt(x) % 1 == 0).Union(numbers2.Where(x => Math.Sqrt(x) % 1 == 0)).Distinct().OrderBy(x => x);
         }
 
         //do not modify this method
