@@ -25,8 +25,17 @@ namespace Exercises
          */
         public static IEnumerable<int> GetNumbers(IEnumerable<object> objects)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var ints = objects.OfType<int>();
+            IEnumerable<int?> nullableInts = objects.OfType<string>().Select(
+                text =>
+                {
+                    int result;
+                    return int.TryParse(text, out result) ? result : (int?)null;
+                });
+            IEnumerable<int> instsFromStrings = nullableInts
+                .Where(nullableNumber => nullableNumber != null)
+                .Select(nullableNumber => nullableNumber.Value);
+            return ints.Concat(instsFromStrings).OrderBy(num => num);
         }
 
         //Coding Exercise 2
