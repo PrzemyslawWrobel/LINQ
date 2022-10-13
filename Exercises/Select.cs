@@ -62,8 +62,33 @@ namespace Exercises
          */
         public static IEnumerable<Person> PeopleFromString(string input)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var inputSplit = input.Split(';').
+                Select(personData =>
+                {
+                    try
+                    {
+                        var split = personData.Split(',');
+                        var fullName = split[0].Split(' ');
+                        var firstName = fullName[0];
+                        var lastName = fullName[1];
+                        var dateOfBirth = DateTime.Parse(split[1]);
+
+
+                        return new Person
+                        {
+                            FirstName = firstName,
+                            LastName = lastName,
+                            DateOfBirth = dateOfBirth
+                        };
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                    ;
+                })
+                .Where(person => person != null);
+            return inputSplit;  
         }
 
         //Refactoring challenge
