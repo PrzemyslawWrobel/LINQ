@@ -67,8 +67,19 @@ namespace Exercises
         public static Dictionary<string, double> SegmentsLengths_Refactored(
             IEnumerable<Point> starts, IEnumerable<Point> ends)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return starts.SelectMany(
+                start => ends, (start, end) =>
+                new
+                {
+                    Start = start,
+                    End = end,
+                    Lenght = SegmentLength(start, end)
+                })
+                .ToDictionary(
+                    segmentData =>
+                    $"Start: ({segmentData.Start})," +
+                    $" End: ({segmentData.End})",
+                     segmentData => segmentData.Lenght);
         }
 
         //do not modify this method
