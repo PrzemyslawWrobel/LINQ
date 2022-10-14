@@ -53,8 +53,13 @@ namespace Exercises
         public static IEnumerable<string> BestMarksAndStudents(
             IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+                return students.SelectMany(student => student.Marks,
+                    (student, mark) => new { Student = student, Mark = mark })
+                    .OrderByDescending(studentMarkPair => studentMarkPair.Mark)
+                    .ThenBy(studentMarkPair => studentMarkPair.Student.Name)
+                    .Take(5)
+                    .Select(studentMarkPair =>
+                        $"({studentMarkPair.Student.Name}: {studentMarkPair.Mark})");
         }
 
         //Refactoring challenge
