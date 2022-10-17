@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Exercises
 {
@@ -29,8 +30,14 @@ namespace Exercises
          */
         public static char? GetTheMostFrequentCharacter(string text)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return  String.IsNullOrEmpty(text) ? 
+                    (char?)null : 
+                    text
+                    .ToLower()
+                    .GroupBy(c => c)
+                    .OrderByDescending(c => c.Count())
+                    .First()
+                    .Key;
         }
 
         //Coding Exercise 2
