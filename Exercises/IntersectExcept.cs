@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Exercises.IntersectExcept;
 
 namespace Exercises
 {
@@ -56,8 +57,14 @@ namespace Exercises
             GetRoutesInfo_Refactored(
                 Route route1, Route route2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var sharedPoints = route1.RoutePoints.Intersect(route2.RoutePoints);
+
+            var unSharedPoints = route1.RoutePoints.Concat(route2.RoutePoints)
+                .Except(sharedPoints);
+
+            return sharedPoints.Select(
+                routePoint => $"Shared point " + $"{routePoint.Name}" + $" at {routePoint.Point}")
+                .Concat(unSharedPoints.Select(routePoint => $"UnShared point " + $"{routePoint.Name}" + $" at {routePoint.Point}"));
         }
 
         //do not modify this method
