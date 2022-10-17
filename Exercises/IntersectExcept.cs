@@ -46,8 +46,8 @@ namespace Exercises
             IEnumerable<int> numbers1,
             IEnumerable<int> numbers2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers1.Except(numbers2).Concat(numbers2.Except(numbers1))
+                .OrderBy(x => x);   
         }
 
         //Refactoring challenge
