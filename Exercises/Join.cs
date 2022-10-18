@@ -148,8 +148,18 @@ namespace Exercises
             IEnumerable<Person> people,
             IEnumerable<House> houses)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return people.Join(
+                houses,
+                owner => owner.Id,
+                house => house.OwnerId,
+
+                (owner, house) => new
+                {
+                    Owner = owner,
+                    House = house
+                }).ToDictionary(
+                owner => owner.House,
+                owner => owner.Owner);
         }
 
         //do not modify this method
