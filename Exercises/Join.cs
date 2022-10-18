@@ -38,10 +38,24 @@ namespace Exercises
              IEnumerable<Person> people,
              IEnumerable<House> houses)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return people.GroupJoin(
+                houses,
+                person => person.Id,
+                house => house.OwnerId,
+                (person, personHouses) => new
+                {
+                    Owner = person,
+                    Houses = personHouses
+                })
+                .SelectMany(ownerHouses => ownerHouses.Houses.DefaultIfEmpty(),
+                (ownerHouses, singleHouse) => $"Person: {ownerHouses.Owner} " +
+                $"owns {GetHouseNameOrDefault(singleHouse)}");
         }
 
+        public static string GetHouseNameOrDefault(House house)
+        {
+            return house == null ? "no house" : house.Adderss;
+        }
         //Coding Exercise 2
         /*
         Imagine you are working on a website of an online store selling groceries. 
@@ -86,8 +100,46 @@ namespace Exercises
             IEnumerable<Item> items,
             IEnumerable<Order> orders)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            //return orders.Join(
+            //    customers,
+            //    order => order.CustomerId,
+            //    customer => customer.Id,
+            //    (order, customer) => new {order, customer}).Join(
+            //    items,
+            //    orderCustomer => orderCustomer.order.ItemId,
+            //    item => item.Id,
+            //    (orderCustomer, item) => new
+            //    {
+            //        Order = orderCustomer.order,
+            //        Customer = orderCustomer.customer,
+            //        Item = item
+            //    }).Select(ordersCustomersItem =>
+            //    $"Customer: {ordersCustomersItem.Customer.Name}," +
+            //    $" Item: {ordersCustomersItem.Item.Name}," +
+            //    $" Count {ordersCustomersItem.Order.Count}");
+
+            var orderCustomers = orders.Join(
+              customers,
+              order => order.CustomerId,
+              customer => customer.Id,
+              (order, customer) => new { order, customer });
+
+            var orderCustomerItems = orderCustomers.Join(
+                items,
+                orderCustomer => orderCustomer.order.ItemId,
+                item => item.Id,
+                (orderCustomer, item) => new
+                {
+                    Order = orderCustomer.order,
+                    Customer = orderCustomer.customer,
+                    Item = item
+                });
+
+            return orderCustomerItems.Select(
+                orderCustomerItem =>
+                    $"Customer: {orderCustomerItem.Customer.Name}," +
+                    $" Item: {orderCustomerItem.Item.Name}," +
+                    $" Count: {orderCustomerItem.Order.Count}");
         }
 
         //Refactoring challenge
