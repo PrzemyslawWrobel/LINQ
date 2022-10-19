@@ -41,8 +41,15 @@ namespace Exercises
          */
         public static string PrintAlphabet(int count)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            if (count < 1 || count > 26)
+            {
+                throw new ArgumentException($"'{nameof(count)}' must be beetween 1 and 26");
+            }
+
+            return Enumerable.Range(1, count - 1).Aggregate(
+                "a",
+                (accumulated, index) =>
+                $"{accumulated},{(char)('a' + index)}");
         }
 
         //Refactoring challenge
