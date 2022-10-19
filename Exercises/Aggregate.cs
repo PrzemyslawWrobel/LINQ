@@ -56,8 +56,24 @@ namespace Exercises
         //TODO implement this method
         public static IEnumerable<int> Fibonacci_Refactored(int n)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            if (n < 1)
+            {
+                throw new ArgumentException(
+                    $"Can't generate Fibonacci sequence " +
+                    $"for {n} elements. N must be a " +
+                    $"positive number");
+            }
+
+            if (n == 1)
+            {
+                return new[] { 0 };
+            }
+            return Enumerable.Range(1, n - 2)
+                .Aggregate(
+                new List<int> { 0, 1 } as IEnumerable<int>,
+                (sequence, nextIndex) => sequence.Append(
+                    sequence.ElementAt(nextIndex - 1) +
+                    sequence.ElementAt(nextIndex)));
         }
 
         //do not modify this method
