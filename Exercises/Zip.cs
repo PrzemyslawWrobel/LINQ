@@ -37,8 +37,12 @@ namespace Exercises
             IEnumerable<int> months,
             IEnumerable<int> days)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var newDate = years.Zip(months,
+                (year, month) => new {year, month});
+            return newDate.Zip(days,
+                (newDatePair, day) => new DateTime(
+                    newDatePair.year, newDatePair.month, day))
+                .OrderBy(date => date);
         }
 
         //Coding Exercise 2
