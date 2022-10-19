@@ -66,8 +66,12 @@ namespace Exercises
             GetDaysDifferencesBetweenDates(
                 IEnumerable<DateTime> dates)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return dates.Zip(dates.Skip(1),
+                (first, second) => $"It's beeb " +
+                $"{(second - first).TotalDays} days" +
+                $"beetween {first.ToString("yyyy-MM-dd")} " +
+                $"and {second.ToString("yyyy-MM-dd")} ");
+
         }
 
         //Refactoring challenge
